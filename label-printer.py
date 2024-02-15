@@ -86,17 +86,26 @@ def print_label(parsed_callnum):
         for item in parsed_callnum:
             printer.text(item, font_config=font)
 def run_whole_process():
-    barcode = input("Type or scan the barcode: ")
-    item_data = get_item_data(barcode)
-    callnum = get_item_callnum(item_data)
-    parsed_callnum = parse_callnum(callnum)
-    print_label(parsed_callnum)
-    print("\n")
-    for item in parsed_callnum:
-        print(item)
-    print("\n")
-    print("\n")
-    return True
+    try:
+        barcode = input("Type or scan the barcode: ")
+        item_data = get_item_data(barcode)
+        callnum = get_item_callnum(item_data)
+        parsed_callnum = parse_callnum(callnum)
+        print_label(parsed_callnum)
+        print("\n")
+        for item in parsed_callnum:
+            print(item)
+        print("\n")
+        print("\n")
+        return True
+    except:
+        print("\n")
+        print("Problem getting call number or printing.")
+        print("See above for error message.")
+        print("Please try again.")
+        print("\n")
+        print("\n")
+        return True
 ### Main Script ###
 ready = True
 while ready:
